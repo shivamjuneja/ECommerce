@@ -1,25 +1,24 @@
 package com.ex.ecommerce.entity;
 
-
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "users")
+@Document(collection = "address")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
-public class User {
+public class Address {
 
     @Id
     private String id;
 
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String password;
-    private Address address;
+    private String street;
+    private String city;
+    private String state;
+    private String country;
+    private String pincode;
 
 }

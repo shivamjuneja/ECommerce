@@ -2,27 +2,29 @@ package com.ex.ecommerce.controller;
 
 
 import com.ex.ecommerce.dao.UserRepository;
+import com.ex.ecommerce.dtos.UserDTO;
 import com.ex.ecommerce.entity.User;
+import com.ex.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+@RequestMapping("/user")
 @RestController
 public class UserController {
 
     @Autowired
-    private UserRepository repository;
+    private UserService userServicee;
 
-    @GetMapping("/user")
-    public User getUser(){
-        return new User("1","shivamjuneja22081998@gmail.com","shivam","juneja","Shivam");
+    @GetMapping("/users")
+    public List<UserDTO> getAllUser(){
+        return userServicee.getAllUsers();
     }
 
     @PostMapping("/save")
-    public User createUser(@RequestBody User user){
-        return repository.save(user);
+    public UserDTO createUser(@RequestBody UserDTO userDTO){
+
+        return userServicee.saveUser(userDTO);
     }
 
 }
